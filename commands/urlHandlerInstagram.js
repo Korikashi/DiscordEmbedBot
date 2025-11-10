@@ -1,11 +1,11 @@
 async function handleUrlInstagram(message) {
     if (message.author.bot) return; // ignora los mensajes mandados por bots
 
-    const patron = /(https?:\/\/(?:[a-z]+\.)?instagram\.com\/(?:p|reel)\/[a-zA-Z0-9_-]+)/; // expresion regular para detectar si al publicacion es de tipo imagen o de tipo video corto
+    const patron = /(https?:\/\/(?:[a-z]+\.)?instagram\.com\/(?:p|reel)\/[a-zA-Z0-9_-]+)/i;  // expresion regular para detectar si al publicacion es de tipo imagen o de tipo video corto
     const match = message.content.match(patron); // busca coincidencias con la URL de Instagram
 
     if (match) {
-        const modifiedURL = match[0].replace('instagram', 'instagramez'); // modifica el dominio de la URL encontrada
+         const modifiedURL = match[0].replace(/^https?:\/\/(?:[a-z]+\.)?instagram\.com/, 'https://kkinstagram.com'); // modifica el dominio de la URL encontrada
 
         // envia un mensaje con la URL modificada  
         await message.reply({content: modifiedURL });
